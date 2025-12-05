@@ -1,7 +1,12 @@
+'use client';
+
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, CircuitBoard } from 'lucide-react';
+import { ArrowRight, CircuitBoard, Languages } from 'lucide-react';
 
 export function Navigation() {
+  const [language, setLanguage] = useState<'en' | 'de'>('en');
+
   return (
     <nav className="container mx-auto px-6 py-6">
       <div className="flex items-center justify-between">
@@ -21,6 +26,17 @@ export function Navigation() {
           <a href="#services" className="text-white/80 hover:text-[#D4AF37] transition-colors">Services</a>
           <a href="#tech" className="text-white/80 hover:text-[#D4AF37] transition-colors">Technology</a>
           <a href="#process" className="text-white/80 hover:text-[#D4AF37] transition-colors">Process</a>
+
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setLanguage(language === 'en' ? 'de' : 'en')}
+            className="border-[#D4AF37]/50 text-[#D4AF37] hover:bg-[#D4AF37]/10 font-semibold"
+          >
+            <Languages className="mr-2 w-4 h-4" />
+            {language === 'en' ? 'DE' : 'EN'}
+          </Button>
+
           <Button className="bg-gradient-to-r from-[#D4AF37] to-[#FFEB3B] hover:from-[#FFEB3B] hover:to-[#D4AF37] text-[#0A0A0A] font-semibold">
             Get Started <ArrowRight className="ml-2 w-4 h-4" />
           </Button>
